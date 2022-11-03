@@ -55,7 +55,7 @@ const AppStakers = () => {
 
   return (
     <div className={styles.app}>
-      {/* <div className={styles.noise} /> */}
+      <div className={styles.noise} />
       <Header navigationLinks={navigationLinks} />
       <div className={styles.contentContainer}>
         <div className={styles.content}>
