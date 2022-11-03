@@ -19,12 +19,14 @@ const StakingContractOneData = {
   SD: config.stakingOneAddress,
   USDC: config.stakingThreeAddress,
   WFTM: config.stakingFiveAddress,
+  PUMPKIN: config.stakingFiveAddress,
 }
 
 const StakingContractTwoData = {
   SD: config.stakingTwoAddress,
   USDC: config.stakingFourAddress,
   WFTM: config.stakingSixAddress,
+  PUMPKIN: config.stakingFiveAddress,
 }
 
 const useSherlock = (token: AvailableERC20Tokens) => {

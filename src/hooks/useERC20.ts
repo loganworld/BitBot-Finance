@@ -23,6 +23,10 @@ export const TokenData = {
     contract: config.wftmAddress,
     decimals: 18,
   },
+  PUMPKIN: {
+    contract: config.pumpkinAddress,
+    decimals: 18,
+  },
 }
 
 export type AvailableERC20Tokens = keyof typeof TokenData

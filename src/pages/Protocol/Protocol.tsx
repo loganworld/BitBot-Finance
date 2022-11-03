@@ -44,7 +44,6 @@ export const ProtocolPage: React.FC = () => {
    */
   const [amount, setAmount] = React.useState<BigNumber>()
   const { balance: usdcBalance } = useERC20("USDC")
-  const { waitForTx } = useWaitTx()
 
   /**
    * Handler for changing the protocol

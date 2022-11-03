@@ -5,6 +5,7 @@ export const config: Config = {
   sdAddress: process.env.REACT_APP_SD_ADDRESS as string,
   usdcAddress: process.env.REACT_APP_USDC_ADDRESS as string,
   wftmAddress: process.env.REACT_APP_WFTM_ADDRESS as string,
+  pumpkinAddress: process.env.REACT_APP_PUMPKNI_ADDRESS as string,
   stakingOneAddress: process.env.REACT_APP_STAKING_ONE_ADDRESS as string,
   stakingTwoAddress: process.env.REACT_APP_STAKING_TWO_ADDRESS as string,
   stakingThreeAddress: process.env.REACT_APP_STAKING_THREE_ADDRESS as string,

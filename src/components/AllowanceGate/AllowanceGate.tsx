@@ -6,6 +6,7 @@ import { TxType } from "../../utils/txModalMessages"
 import { Button } from "../Button/Button"
 import styles from "./AllowanceGate.module.scss"
 import cx from "classnames"
+import { AddNotification } from "../Notification"
 
 interface Props {
     /**
@@ -16,7 +17,7 @@ interface Props {
     /**
      * Required amount to spend
      */
-    amount?: BigNumber
+    amount: BigNumber
 
     /**
      * Name of the action that takes place
@@ -54,7 +55,7 @@ const AllowanceGate: React.FC<PropsWithChildren<Props>> = ({
     const [allowance, setAllowance] = React.useState<BigNumber>()
     const [isSuccess, setIsSuccess] = React.useState(false)
 
-    const { getAllowance, approve } = useERC20(token)
+    const { balance, getAllowance, approve } = useERC20(token)
     const { waitForTx } = useWaitTx()
 
     /**
@@ -91,6 +92,10 @@ const AllowanceGate: React.FC<PropsWithChildren<Props>> = ({
      * Execute action and send success notification
      */
     const handleOnAction = React.useCallback(async () => {
+        if (balance?.lt(amount)) {
+            AddNotification("Error", "You don't have enough balance", "warning");
+            return;
+        }
         await action()
 
         setIsSuccess(true)

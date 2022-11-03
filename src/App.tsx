@@ -1,5 +1,7 @@
 import React from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
+import "react-notifications-component/dist/theme.css";
+import { ReactNotifications } from "react-notifications-component";
 
 import { FundraisingClaimPage } from "./pages/FundraisingClaim"
 import { StakingPage } from "./pages/Staking"
@@ -17,42 +19,43 @@ import MobileBlock from "./components/MobileBlock/MobileBlock"
 import { InternalOverviewPage } from "./pages/InternalOverview/InternalOverview"
 
 function App() {
-  return (
-    <>
-      <Routes>
-        {/** Stakers section routes */}
-        <Route path="/*" element={<AppStakers />}>
-          0
-          <Route path={routes.StakeUSDC} element={<StakingPage token="USDC" />} />
-          <Route path={routes.StakeWFTM} element={<StakingPage token="WFTM" />} />
-          <Route path={routes.Overview} element={<OverviewPage />} />
-          <Route path={routes.Mint} element={<MintPage />} />
-          <Route path={routes.Calculator} element={<CalculatorPage />} />
-          <Route path={routes.FundraiseClaim} element={<FundraisingClaimPage />} />
-          <Route path={routes.USForbidden} element={<USForbiddenPage />} />
-          <Route path="*" element={<Navigate replace to={`/${routes.StakeWFTM}`} />} />
-        </Route>
+    return (
+        <>
+            <ReactNotifications />
+            <Routes>
+                {/** Stakers section routes */}
+                <Route path="/*" element={<AppStakers />}>
+                    0
+                    <Route path={routes.StakeUSDC} element={<StakingPage token="USDC" />} />
+                    <Route path={routes.StakeWFTM} element={<StakingPage token="WFTM" />} />
+                    <Route path={routes.Overview} element={<OverviewPage />} />
+                    <Route path={routes.Mint} element={<MintPage />} />
+                    <Route path={routes.Calculator} element={<CalculatorPage />} />
+                    <Route path={routes.FundraiseClaim} element={<FundraisingClaimPage />} />
+                    <Route path={routes.USForbidden} element={<USForbiddenPage />} />
+                    <Route path="*" element={<Navigate replace to={`/${routes.StakeWFTM}`} />} />
+                </Route>
 
-        {/** Protocols section routes */}
-        <Route path={`${routes.Protocols}/*`} element={<AppProtocols />}>
-          <Route path={protocolsRoutes.Balance} element={<ProtocolPage />} />
+                {/** Protocols section routes */}
+                <Route path={`${routes.Protocols}/*`} element={<AppProtocols />}>
+                    <Route path={protocolsRoutes.Balance} element={<ProtocolPage />} />
 
-          <Route path="*" element={<Navigate replace to={protocolsRoutes.Balance} />} />
-        </Route>
+                    <Route path="*" element={<Navigate replace to={protocolsRoutes.Balance} />} />
+                </Route>
 
-        {/** Internal section routes */}
-        <Route path={`${routes.Internal}/*`} element={<AppInternal />}>
-          <Route path={internalRoutes.InternalOverview} element={<InternalOverviewPage />} />
+                {/** Internal section routes */}
+                <Route path={`${routes.Internal}/*`} element={<AppInternal />}>
+                    <Route path={internalRoutes.InternalOverview} element={<InternalOverviewPage />} />
 
-          <Route path="*" element={<Navigate replace to={internalRoutes.InternalOverview} />} />
-        </Route>
+                    <Route path="*" element={<Navigate replace to={internalRoutes.InternalOverview} />} />
+                </Route>
 
-        <Route path="*" element={<Navigate replace to="/" />} />
-      </Routes>
+                <Route path="*" element={<Navigate replace to="/" />} />
+            </Routes>
 
-      <MobileBlock />
-    </>
-  )
+            <MobileBlock />
+        </>
+    )
 }
 
 export default App

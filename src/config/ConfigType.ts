@@ -12,6 +12,7 @@ export type Config = {
   sdAddress: string
   usdcAddress: string
   wftmAddress: string
+  pumpkinAddress: string
   stakingOneAddress: string
   stakingTwoAddress: string
   stakingThreeAddress: string

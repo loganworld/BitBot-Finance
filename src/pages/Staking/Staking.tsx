@@ -100,7 +100,6 @@ export const StakingPage: React.FC<{ token: AvailableERC20Tokens }> = ({ token }
         if (!amount || isNaN(Number(amount))) return
 
         const amountBigNum = BigNumber.from(Math.floor(Number(amount) * 100)).mul(BigNumber.from(10).pow(decimals - 2))
-        console.log(ethers.utils.formatUnits(amountBigNum));
         await waitForTx(async () => (await stake(amountBigNum, stakingType)) as ethers.ContractTransaction, {
             transactionType: TxType.STAKE,
         })
